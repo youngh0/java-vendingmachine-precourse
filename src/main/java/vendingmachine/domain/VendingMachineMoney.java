@@ -8,6 +8,10 @@ public class VendingMachineMoney {
         money = Integer.parseInt(input);
     }
 
+    public int getMoney() {
+        return money;
+    }
+
     private void validate(String input) {
         isOnlyNumber(input);
         isTenUnit(input);

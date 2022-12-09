@@ -22,6 +22,10 @@ public class VendingMachine {
         }
     }
 
+    public void buyProduct(ProductsInfo productsInfo, String productName, PaymentMoney money) {
+        productsInfo.buyProduct(productName, money);
+    }
+
     private int progressAddCoinCount(int money) {
         int coinAmount = Randoms.pickNumberInList(coins);
         if (Coin.isBiggerThanCoin(money,Coin.of(coinAmount))) {
