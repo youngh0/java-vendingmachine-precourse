@@ -8,6 +8,10 @@ public class ProductPriceDTO {
         this.price = Integer.parseInt(price);
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     private void validate(String price) {
         isNumber(price);
         validatePriceShape(price);
@@ -27,4 +31,6 @@ public class ProductPriceDTO {
         }
         throw new IllegalArgumentException("가격은 100원 이상 10원 단위의 숫자만");
     }
+
+
 }
