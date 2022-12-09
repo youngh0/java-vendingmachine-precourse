@@ -13,10 +13,12 @@ public class ProductsInfo {
     }
 
     public void addProduct(String productInfoInput) {
-        validate(productInfoInput);
+        for (String OneProductInfo : productInfoInput.split(";")) {
+            validateOneProductInfo(OneProductInfo);
+        }
     }
 
-    private void validate(String productInfoInput) {
+    private void validateOneProductInfo(String productInfoInput) {
         validateShape(productInfoInput);
         String[] productInfo = productInfoInput.split(",");
         String price = productInfo[1];
