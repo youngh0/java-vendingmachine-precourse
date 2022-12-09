@@ -24,7 +24,6 @@ class ProductsInfoTest {
     @Test
     void isExistTest() {
         productsInfo.initProductInfo("[콜라,1000,2];[사이다,1400,1]");
-        productsInfo.show();
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> productsInfo.isExistProduct("환타"));
     }
