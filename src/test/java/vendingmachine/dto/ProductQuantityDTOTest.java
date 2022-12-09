@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class ProductQuantityDTOTest {
     @ParameterizedTest
-    @ValueSource(strings = {"01", "0", ""})
+    @ValueSource(strings = {"0", ""})
     void quantityValidationTest(String quantity) {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> new ProductQuantityDTO(quantity));
