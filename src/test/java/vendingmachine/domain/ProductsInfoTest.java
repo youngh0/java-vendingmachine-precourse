@@ -67,7 +67,9 @@ class ProductsInfoTest {
 
     @Test
     void buyProductTest() {
+        PaymentMoney money = new PaymentMoney("1500");
         productsInfo.initProductInfo("[콜라,1000,3];[사이다,1400,1]");
-        productsInfo.buyProduct("콜라",  new PaymentMoney("1500"));
+        productsInfo.buyProduct("콜라",  money);
+        org.assertj.core.api.Assertions.assertThat(money.getMoney()).isEqualTo(500);
     }
 }
