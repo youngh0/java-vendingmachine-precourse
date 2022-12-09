@@ -15,4 +15,11 @@ public class ProductPrice {
     public void addProductPriceInfo(String productName, ProductPriceDTO price) {
         productPriceInfo.put(productName, price);
     }
+
+    public void isExistProduct(String productName) {
+        if (productPriceInfo.containsKey(productName)) {
+            return;
+        }
+        throw new IllegalArgumentException("존재하지 않는 상품명");
+    }
 }

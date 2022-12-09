@@ -19,6 +19,10 @@ public class ProductsInfo {
         }
     }
 
+    public void isExistProduct(String productName) {
+        productPrice.isExistProduct(productName);
+    }
+
     private void validateOneProductInfo(String productInfoInput) {
         validateShape(productInfoInput);
         String[] productInfo = productInfoInput.split(",");
@@ -47,7 +51,7 @@ public class ProductsInfo {
 
     private void addProductInfo(String oneProductInfo) {
         String[] productInfo = oneProductInfo.split(",");
-        String productName = productInfo[0].substring(0, productInfo[0].length() - 1);
+        String productName = productInfo[0].substring(1);
         String price = productInfo[1];
         String quantity = productInfo[2].substring(0, productInfo[2].length() - 1);
         productPrice.addProductPriceInfo(productName, new ProductPriceDTO(price));
