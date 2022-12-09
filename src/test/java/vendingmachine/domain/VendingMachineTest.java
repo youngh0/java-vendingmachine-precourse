@@ -17,7 +17,7 @@ class VendingMachineTest extends NsTest {
                     VendingMachine vendingMachine = new VendingMachine(changes);
                     vendingMachine.initChangeCoinCount(410);
                     run();
-                    assertThat(changes.getChangeCount(Coin.COIN_100)).isEqualTo(4);
+                    assertThat(changes.getChangeCount(Coin.COIN_100)).isEqualTo(3);
                     assertThat(changes.getChangeCount(Coin.COIN_50)).isEqualTo(0);
                     assertThat(changes.getChangeCount(Coin.COIN_10)).isEqualTo(1);
                 },
