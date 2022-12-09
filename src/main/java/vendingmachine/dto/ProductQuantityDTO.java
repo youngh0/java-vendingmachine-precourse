@@ -8,11 +8,12 @@ public class ProductQuantityDTO {
         this.quantity = Integer.parseInt(quantity);
     }
 
-    public void buyProduct(int quantity) {
-        if (this.quantity - quantity < 0) {
+    public boolean buyProduct() {
+        if (quantity < 1) {
             throw new IllegalArgumentException("재고가 부족합니다.");
         }
-        this.quantity -= quantity;
+        quantity -= 1;
+        return true;
     }
 
     public int getQuantity() {

@@ -21,7 +21,7 @@ public class ProductQuantity {
                 .anyMatch(quantity -> quantity.getQuantity() > 0);
     }
 
-    public void buyProduct(String productName, int quantity) {
-        productQuantityInfo.get(productName).buyProduct(quantity);
+    public boolean buyProduct(String productName) {
+        return productQuantityInfo.get(productName).buyProduct();
     }
 }

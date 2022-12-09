@@ -27,6 +27,13 @@ public class ProductsInfo {
         productPrice.isExistProduct(productName);
     }
 
+    public void buyProduct(String productName, int money) {
+        if(productPrice.buyProduct(productName, money) && productQuantity.buyProduct(productName)){
+            return;
+        }
+        throw new IllegalArgumentException("구매 불가");
+    }
+
     private void validateOneProductInfo(String productInfoInput) {
         validateShape(productInfoInput);
         String[] productInfo = productInfoInput.split(",");

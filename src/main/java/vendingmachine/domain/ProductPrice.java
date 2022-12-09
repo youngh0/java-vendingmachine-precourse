@@ -28,4 +28,8 @@ public class ProductPrice {
     public boolean isBiggerThanMinPrice(int money) {
         return money >= minPrice;
     }
+
+    public boolean buyProduct(String productName, int money) {
+        return productPriceInfo.get(productName).getPrice() <= money;
+    }
 }
