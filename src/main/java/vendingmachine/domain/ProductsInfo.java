@@ -19,6 +19,10 @@ public class ProductsInfo {
         }
     }
 
+    public boolean isPossibleBuyAnything(int money) {
+        return productPrice.isBiggerThanMinPrice(money) && productQuantity.checkRemainQuantity();
+    }
+
     public void isExistProduct(String productName) {
         productPrice.isExistProduct(productName);
     }
