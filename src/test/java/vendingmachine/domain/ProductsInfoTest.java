@@ -54,20 +54,20 @@ class ProductsInfoTest {
     void buyProductTestLackMoney() {
         productsInfo.initProductInfo("[콜라,1000,3];[사이다,1400,1]");
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> productsInfo.buyProduct("콜라", 990));
+                () -> productsInfo.buyProduct("콜라", new PaymentMoney("990")));
     }
 
     @Test
     void buyProductTestLackQuantity() {
         productsInfo.initProductInfo("[콜라,1000,3];[사이다,1400,1]");
-        productsInfo.buyProduct("사이다", 1400);
+        productsInfo.buyProduct("사이다", new PaymentMoney("1400"));
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> productsInfo.buyProduct("사이다", 1400 ));
+                () -> productsInfo.buyProduct("사이다", new PaymentMoney("1400") ));
     }
 
     @Test
     void buyProductTest() {
         productsInfo.initProductInfo("[콜라,1000,3];[사이다,1400,1]");
-        productsInfo.buyProduct("콜라",  1500);
+        productsInfo.buyProduct("콜라",  new PaymentMoney("1500"));
     }
 }
