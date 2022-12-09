@@ -12,6 +12,6 @@ class ProductsInfoTest {
     void addProductTest(String productInfo) {
         ProductsInfo productsInfo = new ProductsInfo(new ProductPrice(), new ProductQuantity());
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> productsInfo.addProduct(productInfo));
+                () -> productsInfo.initProductInfo(productInfo));
     }
 }
