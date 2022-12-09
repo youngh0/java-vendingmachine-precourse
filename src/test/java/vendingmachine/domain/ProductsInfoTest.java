@@ -8,9 +8,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class ProductsInfoTest {
     ProductsInfo productsInfo;
+    ProductQuantity productQuantity;
     @BeforeEach
     void init() {
-        productsInfo = new ProductsInfo(new ProductPrice(), new ProductQuantity());
+        productQuantity = new ProductQuantity();
+        productsInfo = new ProductsInfo(new ProductPrice(), productQuantity);
     }
 
     @ParameterizedTest
@@ -26,5 +28,25 @@ class ProductsInfoTest {
         productsInfo.initProductInfo("[콜라,1000,2];[사이다,1400,1]");
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> productsInfo.isExistProduct("환타"));
+    }
+
+    @Test
+    void isPossibleBuyAnythingTest() {
+        productsInfo.initProductInfo("[콜라,1000,2];[사이다,1400,1]");
+        org.assertj.core.api.Assertions.assertThat(productsInfo.isPossibleBuyAnything(1000)).isEqualTo(true);
+    }
+
+    @Test
+    void isPossibleBuyAnythingTestByLackMoney() {
+        productsInfo.initProductInfo("[콜라,1000,2];[사이다,1400,1]");
+        org.assertj.core.api.Assertions.assertThat(productsInfo.isPossibleBuyAnything(990)).isEqualTo(false);
+    }
+
+    @Test
+    void isPossibleBuyAnythingTestByNoQuantity() {
+        productsInfo.initProductInfo("[콜라,1000,2];[사이다,1400,1]");
+        productQuantity.buyProduct("콜라",2);
+        productQuantity.buyProduct("사이다",1);
+        org.assertj.core.api.Assertions.assertThat(productsInfo.isPossibleBuyAnything(990)).isEqualTo(false);
     }
 }
