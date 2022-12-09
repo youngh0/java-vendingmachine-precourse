@@ -23,6 +23,7 @@ public class VendingMachine {
     }
 
     public void buyProduct(ProductsInfo productsInfo, String productName, PaymentMoney money) {
+        productsInfo.isExistProduct(productName);
         productsInfo.buyProduct(productName, money);
     }
 
