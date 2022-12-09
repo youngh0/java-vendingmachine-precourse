@@ -26,6 +26,10 @@ public enum Coin {
         return coins.get(amount);
     }
 
+    public static boolean isBiggerThanCoin(int amount, Coin coin) {
+        return amount >= coin.getAmount();
+    }
+
     public int getAmount() {
         return amount;
     }
