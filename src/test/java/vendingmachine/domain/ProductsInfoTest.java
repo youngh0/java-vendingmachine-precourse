@@ -45,8 +45,29 @@ class ProductsInfoTest {
     @Test
     void isPossibleBuyAnythingTestByNoQuantity() {
         productsInfo.initProductInfo("[콜라,1000,2];[사이다,1400,1]");
-        productQuantity.buyProduct("콜라",2);
-        productQuantity.buyProduct("사이다",1);
+        productQuantity.buyProduct("콜라");
+        productQuantity.buyProduct("사이다");
         org.assertj.core.api.Assertions.assertThat(productsInfo.isPossibleBuyAnything(990)).isEqualTo(false);
+    }
+
+    @Test
+    void buyProductTestLackMoney() {
+        productsInfo.initProductInfo("[콜라,1000,3];[사이다,1400,1]");
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> productsInfo.buyProduct("콜라", 990));
+    }
+
+    @Test
+    void buyProductTestLackQuantity() {
+        productsInfo.initProductInfo("[콜라,1000,3];[사이다,1400,1]");
+        productsInfo.buyProduct("사이다", 1400);
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> productsInfo.buyProduct("사이다", 1400 ));
+    }
+
+    @Test
+    void buyProductTest() {
+        productsInfo.initProductInfo("[콜라,1000,3];[사이다,1400,1]");
+        productsInfo.buyProduct("콜라",  1500);
     }
 }
