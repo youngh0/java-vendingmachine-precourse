@@ -12,9 +12,10 @@ public class ProductsInfo {
         this.productQuantity = productQuantity;
     }
 
-    public void addProduct(String productInfoInput) {
-        for (String OneProductInfo : productInfoInput.split(";")) {
-            validateOneProductInfo(OneProductInfo);
+    public void initProductInfo(String productInfoInput) {
+        for (String oneProductInfo : productInfoInput.split(";")) {
+            validateOneProductInfo(oneProductInfo);
+            addProductInfo(oneProductInfo);
         }
     }
 
@@ -36,11 +37,20 @@ public class ProductsInfo {
         throw new IllegalArgumentException("잘못된 상품 형태 입력");
     }
 
-    private ProductPriceDTO validatePrice(String price) {
-        return new ProductPriceDTO(price);
+    private void validatePrice(String price) {
+        new ProductPriceDTO(price);
     }
 
-    private ProductQuantityDTO validateQuantity(String quantity) {
-        return new ProductQuantityDTO(quantity);
+    private void validateQuantity(String quantity) {
+        new ProductQuantityDTO(quantity);
+    }
+
+    private void addProductInfo(String oneProductInfo) {
+        String[] productInfo = oneProductInfo.split(",");
+        String productName = productInfo[0].substring(0, productInfo[0].length() - 1);
+        String price = productInfo[1];
+        String quantity = productInfo[2].substring(0, productInfo[2].length() - 1);
+        productPrice.addProductPriceInfo(productName, new ProductPriceDTO(price));
+        productQuantity.addProductQuantityInfo(productName, new ProductQuantityDTO(quantity));
     }
 }
