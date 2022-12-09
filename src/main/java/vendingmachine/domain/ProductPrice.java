@@ -32,4 +32,8 @@ public class ProductPrice {
     public boolean buyProduct(String productName, int money) {
         return productPriceInfo.get(productName).getPrice() <= money;
     }
+
+    public void minusRestMoney(PaymentMoney money, String productName) {
+        money.minusMoney(productPriceInfo.get(productName).getPrice());
+    }
 }

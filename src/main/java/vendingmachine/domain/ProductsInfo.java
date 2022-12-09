@@ -27,8 +27,9 @@ public class ProductsInfo {
         productPrice.isExistProduct(productName);
     }
 
-    public void buyProduct(String productName, int money) {
-        if(productPrice.buyProduct(productName, money) && productQuantity.buyProduct(productName)){
+    public void buyProduct(String productName, PaymentMoney money) {
+        if(productPrice.buyProduct(productName, money.getMoney()) && productQuantity.buyProduct(productName)){
+            productPrice.minusRestMoney(money, productName);
             return;
         }
         throw new IllegalArgumentException("구매 불가");

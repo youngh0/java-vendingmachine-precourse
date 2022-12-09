@@ -8,6 +8,14 @@ public class PaymentMoney {
         this.money = Integer.parseInt(money);
     }
 
+    public void minusMoney(int paymentAmount) {
+        money -= paymentAmount;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
     private void validate(String money) {
         if (money.endsWith("0")) {
             return;
